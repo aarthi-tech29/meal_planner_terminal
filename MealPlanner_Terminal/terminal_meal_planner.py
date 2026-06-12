@@ -197,8 +197,16 @@ meal_plan = recommend_meals(
     health
 )
 preferences = get_user_preferences(
-    name
+    name,
+    goal,
+    diet,
+    health
 )
+print("\nDEBUG INPUTS")
+print("Name:", repr(name))
+print("Goal:", repr(goal))
+print("Diet:", repr(diet))
+print("Health:", repr(health))
 # Nutrition Analysis
 
 nutrition = nutrition_totals(
@@ -320,99 +328,68 @@ print(
 print("\nThank you for using Meal Planner!")
 
 # input
-# Enter Name: Advika
-# Enter Age: 15
-# Enter Gender (Male/Female): Female
-# Enter Height (cm): 160
-# Enter Weight (kg): 70
-# Enter Activity Level (sedentary/light/moderate/active): light
-# Enter Goal (Weight Loss/Weight Gain/Maintenance): Weight Loss
-# Enter Diet Type (Vegetarian/Vegan/Non-Vegetarian): Non-Vegetarian
-# Enter Health Condition (None/Diabetes/Heart Disease): None
+# 1. Weight Loss + Diabetes (Vegetarian)
+# Name: Advika
+# Age: 25
+# Gender: Female
+# Height: 160
+# Weight: 70
+# Activity Level: light
+# Goal: Weight Loss
+# Diet Type: Vegetarian
+# Health Condition: Diabetes
 
-# Name: John
-# Age: 28
+# 2. Weight Loss + Heart Disease (Vegetarian)
+# Name: Priya
+# Age: 50
+# Gender: Female
+# Height: 168
+# Weight: 78
+# Activity Level: light
+# Goal: Weight Loss
+# Diet Type: Vegetarian
+# Health Condition: Heart Disease
+
+# 3. Weight Loss + Heart Disease (Non-Vegetarian)
+# Name: Advika
+# Age: 40
+# Gender: Female
+# Height: 160
+# Weight: 80
+# Activity Level: light
+# Goal: Weight Loss
+# Diet Type: Non-Vegetarian
+# Health Condition: Heart Disease
+
+# 4. Weight Gain (Vegetarian)
+# Name: Riya
+# Age: 22
+# Gender: Female
+# Height: 165
+# Weight: 50
+# Activity Level: active
+# Goal: Weight Gain
+# Diet Type: Vegetarian
+# Health Condition: None
+
+# 5. Maintenance (Vegan)
+# Name: Arun
+# Age: 30
+# Gender: Male
+# Height: 170
+# Weight: 85
+# Activity Level: moderate
+# Goal: Maintenance
+# Diet Type: Vegan
+# Health Condition: None
+
+# 6. Maintenance (Non-Vegetarian)
+# Name: David
+# Age: 30
 # Gender: Male
 # Height: 175
 # Weight: 74
-# Activity: light
+# Activity Level: light
 # Goal: Maintenance
-
-# Enter Name: Riya
-# Enter Age: 50
-# Enter Gender (Male/Female): Female
-# Enter Height (cm): 160
-# Enter Weight (kg): 80
-# Enter Activity Level (sedentary/light/moderate/active): sedentary
-# Enter Goal (Weight Loss/Weight Gain/Maintenance): Weight Gain
-# Enter Diet Type (Vegetarian/Vegan/Non-Vegetarian): Vegan
-# Enter Health Condition (None/Diabetes/Heart Disease): Diabetes50
-# ==============================
-# Input 1 – Weight Loss + Diabetes
-# Enter Name: Advika
-# Enter Age: 25
-# Enter Gender (Male/Female): Female
-# Enter Height (cm): 160
-# Enter Weight (kg): 70
-# Enter Activity Level (sedentary/light/moderate/active): light
-# Enter Goal (Weight Loss/Weight Gain/Maintenance): Weight Loss
-# Enter Diet Type (Vegetarian/Vegan/Non-Vegetarian): Vegetarian
-# Enter Health Condition (None/Diabetes/Heart Disease): Diabetes
-
-# Expected ML output:
-
-# Breakfast: Diabetic Oats
-# Lunch: Diabetic Salad
-# Dinner: Diabetic Soup
-# Snack: Diabetic Snack
-# Input 2 – Weight Gain
-# Enter Name: Riya
-# Enter Age: 22
-# Enter Gender (Male/Female): Female
-# Enter Height (cm): 165
-# Enter Weight (kg): 50
-# Enter Activity Level (sedentary/light/moderate/active): active
-# Enter Goal (Weight Loss/Weight Gain/Maintenance): Weight Gain
-# Enter Diet Type (Vegetarian/Vegan/Non-Vegetarian): Vegetarian
-# Enter Health Condition (None/Diabetes/Heart Disease): None
-
-# Expected ML output:
-
-# Breakfast: Muesli
-# Lunch: Weight Gain Rice
-# Dinner: Paneer Tikka
-# Snack: Protein Shake
-# Input 3 – Maintenance
-# Enter Name: John
-# Enter Age: 30
-# Enter Gender (Male/Female): Male
-# Enter Height (cm): 175
-# Enter Weight (kg): 74
-# Enter Activity Level (sedentary/light/moderate/active): light
-# Enter Goal (Weight Loss/Weight Gain/Maintenance): Maintenance
-# Enter Diet Type (Vegetarian/Vegan/Non-Vegetarian): Vegan
-# Enter Health Condition (None/Diabetes/Heart Disease): None
-
-# Expected ML output:
-
-# Breakfast: Upma
-# Lunch: Quinoa
-# Dinner: Tomato Soup
-# Snack: Apple
-# Input 4 – Heart Disease
-# Enter Name: David
-# Enter Age: 55
-# Enter Gender (Male/Female): Male
-# Enter Height (cm): 170
-# Enter Weight (kg): 85
-# Enter Activity Level (sedentary/light/moderate/active): sedentary
-# Enter Goal (Weight Loss/Weight Gain/Maintenance): Weight Loss
-# Enter Diet Type (Vegetarian/Vegan/Non-Vegetarian): Vegetarian
-# Enter Health Condition (None/Diabetes/Heart Disease): Heart Disease
-
-# Expected ML output:
-
-# Breakfast: Oats
-# Lunch: Chapati
-# Dinner: Vegetable Soup
-# Snack: Apple
+# Diet Type: Non-Vegetarian
+# Health Condition: None

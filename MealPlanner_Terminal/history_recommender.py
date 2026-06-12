@@ -1,30 +1,56 @@
 import pandas as pd
 
-def get_user_preferences(username):
+def get_user_preferences(
+    username,
+    goal,
+    diet_type,
+    health_condition
+):
 
     try:
-        df = pd.read_csv("history.csv")
 
-        # Check required columns
-        required_columns = [
+        df = pd.read_csv(
+            "history.csv",
+            keep_default_na=False
+        )
+
+        # Convert everything to lowercase strings
+        for col in [
             "Name",
-            "Breakfast",
-            "Lunch",
-            "Dinner",
-            "Snack"
-        ]
+            "Goal",
+            "Diet_Type",
+            "Health_Condition"
+        ]:
+            df[col] = (
+                df[col]
+                .fillna("")
+                .astype(str)
+                .str.strip()
+                .str.lower()
+            )
 
-        for col in required_columns:
-            if col not in df.columns:
-                print(f"Column missing: {col}")
-                return None
+        username = username.strip().lower()
+        goal = goal.strip().lower()
+        diet_type = diet_type.strip().lower()
+        health_condition = health_condition.strip().lower()
 
-        # Filter user
         user_data = df[
-            df["Name"].astype(str).str.lower()
-            ==
-            username.lower()
+            (df["Name"].astype(str).str.strip().str.lower()
+                == username.strip().lower())
+            &
+            (df["Goal"].astype(str).str.strip().str.lower()
+                == goal.strip().lower())
+            &
+            (df["Diet_Type"].astype(str).str.strip().str.lower()
+                == diet_type.strip().lower())
+            &
+            (df["Health_Condition"].astype(str).str.strip().str.lower()
+                == health_condition.strip().lower())
         ]
+
+        # print("\nDEBUG MATCHES:")
+        # print(user_data)
+        # print("Rows Found:", len(user_data))
 
         if user_data.empty:
             return None
@@ -38,16 +64,16 @@ def get_user_preferences(username):
             "Snack"
         ]:
 
-            # Remove empty values
-            values = user_data[meal].dropna()
+            mode_values = user_data[meal].mode()
 
-            if len(values) == 0:
-                preferences[meal] = "No Data"
+            if len(mode_values) > 0:
+                preferences[meal] = mode_values.iloc[0]
             else:
-                preferences[meal] = values.mode().iloc[0]
+                preferences[meal] = "No Data"
 
         return preferences
 
     except Exception as e:
+
         print("History Error:", e)
         return None
