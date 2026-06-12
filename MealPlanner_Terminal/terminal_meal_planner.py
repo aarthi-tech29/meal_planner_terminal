@@ -202,11 +202,11 @@ preferences = get_user_preferences(
     diet,
     health
 )
-print("\nDEBUG INPUTS")
-print("Name:", repr(name))
-print("Goal:", repr(goal))
-print("Diet:", repr(diet))
-print("Health:", repr(health))
+# print("\nDEBUG INPUTS")
+# print("Name:", repr(name))
+# print("Goal:", repr(goal))
+# print("Diet:", repr(diet))
+# print("Health:", repr(health))
 # Nutrition Analysis
 
 nutrition = nutrition_totals(
